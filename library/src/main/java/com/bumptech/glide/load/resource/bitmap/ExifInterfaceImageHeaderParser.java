@@ -38,7 +38,6 @@ public final class ExifInterfaceImageHeaderParser implements ImageHeaderParser {
   public int getOrientation(@NonNull InputStream is, @NonNull ArrayPool byteArrayPool)
       throws IOException {
     ExifInterface exifInterface = new ExifInterface(is);
-    is.close();
     int result =
         exifInterface.getAttributeInt(
             ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
