@@ -328,12 +328,7 @@ public final class Downsampler {
       isHardwareConfigAllowed = false;
     }
 
-    int orientation;
-    try {
-      orientation = imageReader.getImageOrientation();
-    } catch (InvalidMarkException e) {
-      orientation = ImageHeaderParser.UNKNOWN_ORIENTATION;
-    }
+    int orientation = -1;
 
     int degreesToRotate = TransformationUtils.getExifOrientationDegrees(orientation);
     boolean isExifOrientationRequired = TransformationUtils.isExifOrientationRequired(orientation);
