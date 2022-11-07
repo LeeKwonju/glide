@@ -112,6 +112,10 @@ public class RecyclableBufferedInputStream extends FilterInputStream {
     }
   }
 
+  public boolean isBufferOverLimit() {
+    return buf.length >= marklimit;
+  }
+
   /**
    * Closes this stream. The source stream is closed and any resources associated with it are
    * released.

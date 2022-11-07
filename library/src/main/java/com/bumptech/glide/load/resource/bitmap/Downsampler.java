@@ -318,9 +318,6 @@ public final class Downsampler {
 
     String sourceMimeType = options.outMimeType;
 
-
-    int orientation = imageReader.getImageOrientation();
-
     // If we failed to obtain the image dimensions, we may end up with an incorrectly sized Bitmap,
     // so we want to use a mutable Bitmap type. One way this can happen is if the image header is so
     // large (10mb+) that our attempt to use inJustDecodeBounds fails and we're forced to decode the
@@ -331,6 +328,10 @@ public final class Downsampler {
     if (sourceWidth == -1 || sourceHeight == -1) {
       isHardwareConfigAllowed = false;
     }
+
+    int orientation = imageReader.getImageOrientation();
+
+
     int degreesToRotate = TransformationUtils.getExifOrientationDegrees(orientation);
     boolean isExifOrientationRequired = TransformationUtils.isExifOrientationRequired(orientation);
 

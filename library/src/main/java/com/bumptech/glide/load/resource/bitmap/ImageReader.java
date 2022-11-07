@@ -202,6 +202,10 @@ interface ImageReader {
 
     @Override
     public int getImageOrientation() throws IOException {
+      if (dataRewinder.isBufferOverSizeLimit()) {
+        return -1;
+      }
+
       return ImageHeaderParserUtils.getOrientation(
           parsers, dataRewinder.rewindAndGet(), byteArrayPool);
     }

@@ -36,6 +36,10 @@ public final class InputStreamRewinder implements DataRewinder<InputStream> {
     return bufferedStream;
   }
 
+  public boolean isBufferOverSizeLimit() {
+    return bufferedStream.isBufferOverLimit();
+  }
+
   @Override
   public void cleanup() {
     bufferedStream.release();
