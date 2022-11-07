@@ -341,8 +341,10 @@ public class RecyclableBufferedInputStream extends FilterInputStream {
       throw new IOException("Stream is closed");
     }
     if (-1 == markpos) {
-   //   throw new InvalidMarkException(
-      //      "Mark has been invalidated, pos: " + pos + " markLimit: " + marklimit);
+      markpos = 0;
+      pos = 0;
+      throw new InvalidMarkException(
+            "Mark has been invalidated, pos: " + pos + " markLimit: " + marklimit);
     }
     pos = markpos;
   }
@@ -401,6 +403,11 @@ public class RecyclableBufferedInputStream extends FilterInputStream {
       markpos = -1;
     }
     return read + skipped;
+  }
+
+  public void realReset() {
+    markpos = 0;
+    pos = 0;
   }
 
   /**

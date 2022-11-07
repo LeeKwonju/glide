@@ -32,6 +32,10 @@ public final class InputStreamRewinder implements DataRewinder<InputStream> {
     return bufferedStream;
   }
 
+  public void resetTest() {
+    bufferedStream.realReset();
+  }
+
   @Override
   public void cleanup() {
     bufferedStream.release();
