@@ -39,22 +39,22 @@ import java.io.InputStream;
  */
 public class RecyclableBufferedInputStream extends FilterInputStream {
   /** The buffer containing the current bytes read from the target InputStream. */
-  private volatile byte[] buf;
+  volatile byte[] buf;
 
   /** The total number of bytes inside the byte array {@code buf}. */
-  private int count;
+  int count;
 
   /** The current limit, which when passed, invalidates the current mark. */
-  private int marklimit;
+  int marklimit;
 
   /**
    * The currently marked position. -1 indicates no mark has been put or the mark has been
    * invalidated.
    */
-  private int markpos = -1;
+  int markpos = -1;
 
   /** The current position within the byte array {@code buf}. */
-  private int pos;
+  int pos;
 
   private final ArrayPool byteArrayPool;
 
