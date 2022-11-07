@@ -28,12 +28,12 @@ public final class InputStreamRewinder implements DataRewinder<InputStream> {
   @NonNull
   @Override
   public InputStream rewindAndGet() throws IOException {
-    bufferedStream.reset();
+    try {
+      bufferedStream.reset();
+    } catch (IOException e) {
+      bufferedStream.realReset();
+    }
     return bufferedStream;
-  }
-
-  public void resetTest() {
-    bufferedStream.realReset();
   }
 
   @Override
